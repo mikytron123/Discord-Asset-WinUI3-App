@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DiscordEmoteApp (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "DiscordEmoteApp (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
