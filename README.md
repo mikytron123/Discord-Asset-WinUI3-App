@@ -30,14 +30,10 @@
 
 This is a winui3 application for sharing discord emote and stickers. 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
-* [![WinUI3][WindowUI3]]
-* [![Newtonsoft][newtonsoft-url]]
+* ![WinUI3][WindowUI3]
+* ![Newtonsoft][newtonsoft-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
