@@ -12,12 +12,14 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Newtonsoft.Json;
+using Microsoft.Windows.AppNotifications.Builder;
+using Microsoft.Windows.AppNotifications;
+
 using System.Diagnostics;
 using WinRT;
 using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.Foundation.Diagnostics;
-using Newtonsoft.Json.Bson;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -65,6 +67,7 @@ namespace DiscordEmoteApp
         {
             if (e.Key == Windows.System.VirtualKey.Enter)
             {
+
                 if (models.Count == 0)
                 {
                     await LoadDownloadedAssets();
@@ -87,6 +90,16 @@ namespace DiscordEmoteApp
             var package = new DataPackage();
             package.SetText(text);
             Clipboard.SetContent(package);
+
+            var notification = new AppNotificationBuilder()
+                             .AddText("Copied to clipboard")
+                             .SetInlineImage(new Uri(text))
+                             .SetDuration(AppNotificationDuration.Default)
+                             .BuildNotification();
+            notification.Expiration = DateTime.Now.AddSeconds(5);
+
+            var notificationManager = AppNotificationManager.Default;
+            notificationManager.Show(notification);
         }
 
 
