@@ -20,6 +20,7 @@ using WinRT;
 using System.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
 using Windows.Foundation.Diagnostics;
+using System.Runtime.Versioning;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -34,7 +35,6 @@ namespace DiscordEmoteApp
         public MainWindow()
         {
             this.InitializeComponent();
-            //LoadAssets();
 
         }
 
@@ -44,7 +44,7 @@ namespace DiscordEmoteApp
         public IServiceProvider container = (Application.Current as App).Container;
 
 
-
+        [SupportedOSPlatform("windows10.0.19041")]
         public void LoadAssets()
         {
             string filepath = $"{Windows.ApplicationModel.Package.Current.InstalledPath}/Assets/data.json";
@@ -85,7 +85,7 @@ namespace DiscordEmoteApp
 
         }
 
-        private void CopyToClipboard(string text)
+        private static void CopyToClipboard(string text)
         {
             var package = new DataPackage();
             package.SetText(text);
