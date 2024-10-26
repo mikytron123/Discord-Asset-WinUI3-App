@@ -120,12 +120,14 @@ namespace DiscordEmoteApp
         private async void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
             var service = container.GetService<Downloader>();
+            Data.Clear();
             DownloadProgress.IsActive = true;
             DownloadProgress.Visibility = Visibility.Visible;
             var token = container.GetService<AppConfig>().ConfigurationRoot["token"];
             await service.DownloadfilesAsync(token);
             DownloadProgress.IsActive = false;
             DownloadProgress.Visibility = Visibility.Collapsed;
+            await LoadDownloadedAssets();
 
         }
     }
